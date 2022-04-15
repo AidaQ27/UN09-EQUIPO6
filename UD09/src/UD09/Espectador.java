@@ -1,5 +1,6 @@
+package UD09;
 
-public class EspectadorApp {
+public class Espectador {
 
 		//Atributos//
 		private  String nombre;
@@ -7,7 +8,7 @@ public class EspectadorApp {
 		private double dinero;
 		
 		//Constructores//
-		public EspectadorApp(String nombre, int edad, double dinero) {
+		public Espectador(String nombre, int edad, double dinero) {
 			this.nombre = nombre;
 			this.edad = edad;
 			this.dinero = dinero;			
