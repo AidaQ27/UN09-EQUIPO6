@@ -1,4 +1,4 @@
-package UD09;
+package ex06;
 
 public class mainApp {
 
