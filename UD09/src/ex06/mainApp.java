@@ -9,6 +9,8 @@ public class mainApp {
 		cine.crearAsientos();
 //		cine.getAsientos();
 //		System.out.println();
+		
+		//prueba modificacion
 
 	}
 
