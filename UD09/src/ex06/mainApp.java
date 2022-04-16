@@ -74,7 +74,8 @@ public class mainApp {
 	}
 	
 	public static void asignarAsiento(ArrayList<Asiento>asientos, Espectador espectador) {
-//		HashArray<Asiento, Espectador>
+//		HashArray<Asiento, Espectador> 
+//		random(0, 63);
 	}
 
 }

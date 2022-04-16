@@ -16,7 +16,7 @@ public class Asiento {
 	};
 
 	// Getter Setter disponibilidad del asiento
-	public boolean isDisponible() {
+	public boolean getDisponible() {
 		return this.disponible;
 	}
 

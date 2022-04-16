@@ -52,6 +52,7 @@ public class Cine {
 			for (int y = 0; y < 9; y++) { // for por cada columna
 				Asiento asiento = new Asiento(letraAsiento, y + 1);
 				this.asientos.add(asiento);
+				// Printar los asientos en consola
 				System.out.print(asiento.getFila() + String.valueOf(asiento.getColumna()) + " ");
 				if (y == 8) {
 					System.out.println("\n");
