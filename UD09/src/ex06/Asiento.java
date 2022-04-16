@@ -24,4 +24,5 @@ public class Asiento {
 		this.disponible = disponible;
 	}
 
+	
 }
