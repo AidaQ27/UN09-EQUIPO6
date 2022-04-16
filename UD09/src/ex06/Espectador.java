@@ -1,4 +1,4 @@
-package src.ex06;
+package ex06;
 
 public class Espectador {
 
