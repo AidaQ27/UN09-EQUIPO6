@@ -32,9 +32,6 @@ public class Espectador {
 		public void setDinero(double dinero) {
 			this.dinero = dinero;
 		}
-		public void pagar(double precio) {
-			dinero -= precio;
-		}
 		public boolean validarEdad(int edadMin) {
 			return edad >= edadMin;
 		}
