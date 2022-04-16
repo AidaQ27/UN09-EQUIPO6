@@ -1,4 +1,4 @@
-package UD09;
+package src.ex06;
 
 public class Pelicula {
 	// Atributos

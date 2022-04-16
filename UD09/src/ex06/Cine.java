@@ -1,4 +1,4 @@
-package UD09;
+package src.ex06;
 public class Cine {
 	
 	// Atributos de la clase Cine
