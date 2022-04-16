@@ -1,4 +1,4 @@
-package ex06;
+package UD09;
 
 public class Asiento {
 
@@ -10,7 +10,7 @@ public class Asiento {
 	// Constructor
 	public Asiento(char columna, int fila) {
 		this.columna = columna;
-		this.fila = fila;
+		this.fila = columna;
 		this.disponible = true;
 
 	};
@@ -23,10 +23,5 @@ public class Asiento {
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
-	
-	public String toString() {
-		return "Numero asiento: " + columna + " " + fila;
-	}
 
-	
 }
