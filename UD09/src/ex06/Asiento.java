@@ -16,7 +16,7 @@ public class Asiento {
 	};
 
 	// Getter Setter disponibilidad del asiento
-	public boolean isDisponible() {
+	public boolean getDisponible() {
 		return this.disponible;
 	}
 
@@ -25,7 +25,24 @@ public class Asiento {
 	}
 	
 	public String toString() {
-		return "Numero asiento: " + columna + " " + fila;
+		return columna + " " + fila;
+//		return "Numero asiento: " + columna + " " + fila;
+	}
+	
+	public char getColumna() {
+		return columna;
+	}
+
+	public void setColumna(char columna) {
+		this.columna = columna;
+	}
+
+	public int getFila() {
+		return fila;
+	}
+
+	public void setFila(int fila) {
+		this.fila = fila;
 	}
 
 	
