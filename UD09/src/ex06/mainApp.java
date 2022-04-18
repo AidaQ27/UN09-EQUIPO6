@@ -21,16 +21,20 @@ public class mainApp {
 			boolean tieneEdadMin = espectador.validarEdad(pelicula.getEdadMin());
 			boolean tieneDinero = espectador.validarDinero(cine.getPrecioEntrada());
 			if (tieneEdadMin && tieneDinero) {
-				asignarAsiento(cine.getAsientos(),espectador);
+				if (cine.comprobarAsientoLibre()) { // Asignar asiento si es true
+					asignarAsiento(cine.getAsientos(), espectador);
+					
+				}else{
+					System.out.println("La Sala est� completa");
+				}
 			}
+
 		}
 
 	}
 
-	/**********************************************/
-
-	/**
-	 * Genera una cantidad de espectadores
+	/**********************************************
+	 * /** Genera una cantidad de espectadores
 	 * 
 	 * @param numeroEspectadores
 	 * @return
@@ -74,19 +78,19 @@ public class mainApp {
 
 		return nombreCompleto;
 	}
-	
-	public static void asignarAsiento(ArrayList<Asiento>asientos, Espectador espectador) {
+
+	public static void asignarAsiento(ArrayList<Asiento> asientos, Espectador espectador) {
 		Hashtable<Asiento, Espectador> mapaAsientoEspectador = new Hashtable<Asiento, Espectador>();
-		
+
 		boolean asignado = false;
-		while(!asignado) {
+		while (!asignado) {
 			Asiento asiento = asientos.get(random(0, 72));
-			
-			if(asiento.getDisponible()) {
+
+			if (asiento.getDisponible()) {
 				mapaAsientoEspectador.put(asiento, espectador);
 				asignado = true;
 			}
 		}
-		
+
 	}
 }
