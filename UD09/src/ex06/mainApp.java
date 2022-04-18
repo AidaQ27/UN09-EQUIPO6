@@ -7,13 +7,13 @@ public class mainApp {
 
 	public static void main(String[] args) {
 		// Instanciamos pelicula
-		Pelicula pelicula = new Pelicula("Spiderwoman", 132, 16, "Director");
+		Pelicula pelicula = new Pelicula("Spiderwoman", 132, 16, "Jhon Doe");
 		// Instanciamos cine
 		Cine cine = new Cine(pelicula);
 		cine.crearAsientos();
 
 		// Generamos los espectadores
-		ArrayList<Espectador> espectadores = generarEspectadores(random(20, 64));
+		ArrayList<Espectador> espectadores = generarEspectadores(random(72, 72));
 		for (int i = 0; i < espectadores.size(); i++) {
 			Espectador espectador = espectadores.get(i);
 			// Comprobar si el espectador tiene la edad minima para ver la pelicula
@@ -23,13 +23,26 @@ public class mainApp {
 			if (tieneEdadMin && tieneDinero) {
 				if (cine.comprobarAsientoLibre()) { // Asignar asiento si es true
 					asignarAsiento(cine.getAsientos(), espectador);
-					
-				}else{
-					System.out.println("La Sala estï¿½ completa");
+
+				} else {
+					System.out.println("La Sala esta completa");
 				}
+			} else {
+				System.out.println(espectador.getNombre() + " tiene " + espectador.getEdad() + " años y "
+						+ espectador.getDinero() + "€");
+				if (!tieneEdadMin) {
+					System.out.println("No tiene la edad para entrar.");
+				}
+				if (!tieneDinero) {
+					System.out.println("No tiene suficiente dinero.");
+				}
+				System.out.println("");
 			}
 
 		}
+
+		// Mostrar sala
+		cine.mostrarSala();
 
 	}
 
@@ -72,9 +85,9 @@ public class mainApp {
 	 */
 	public static String generarNombreApellido() {
 		String[] nombres = { "Pepe", "Juan", "Maria", "Isabel", "Carlos", "David", "Cristina" };
-		String[] apellido = { "Sanchez", "Perez", "Vlad", "Marin", "Martinez", "Collado", "Marquez" };
+		String[] apellido = { "Sanchez", "Perez", "Gallego", "Marin", "Martinez", "Collado", "Marquez" };
 
-		String nombreCompleto = nombres[random(0, 6)] + apellido[random(0, 6)];
+		String nombreCompleto = nombres[random(0, 6)] + " " + apellido[random(0, 6)];
 
 		return nombreCompleto;
 	}
@@ -88,6 +101,7 @@ public class mainApp {
 
 			if (asiento.getDisponible()) {
 				mapaAsientoEspectador.put(asiento, espectador);
+				asiento.setDisponible(false);
 				asignado = true;
 			}
 		}

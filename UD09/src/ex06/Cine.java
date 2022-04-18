@@ -9,8 +9,6 @@ public class Cine {
 	private int precioEntrada;
 	private ArrayList<Asiento> asientos;
 	private int asientosOcupados;
-	
-	
 
 	// Constructor
 	public Cine(Pelicula pelicula) {
@@ -46,7 +44,9 @@ public class Cine {
 		this.asientos = asientos;
 	}
 
-	// Metodo para
+	/**
+	 * Crear Asientos
+	 */
 	public void crearAsientos() {
 
 		char letraAsiento = 64; // 65 = 'A'
@@ -60,34 +60,56 @@ public class Cine {
 			}
 
 		}
-		
+
 	}
-	
 
 	/**
 	 * Metodo para mostrar asientos libres y ocupados
 	 */
-	public void mostrarSala(ArrayList <Asiento> asiento) { 
-		// Printar los asientos en consola
-		System.out.print(asiento.getFila() + String.valueOf(asiento.getColumna()) + " ");
-		if (y == 8) {
-			System.out.println("\n");
+	public void mostrarSala() {
+
+		// Printar la pelicula
+		System.out.println("___________________________________");
+		System.out.println(this.pelicula + "\n");
+
+		// Printar los asientos
+		for (int i = 1; i <= this.asientos.size(); i++) {
+			Asiento asiento = asientos.get(i - 1);
+			// Printar los asientos en consola
+			// Si el asiento esta ocupado imprimir una "X"
+			if (asiento.getDisponible()) {
+				System.out.print("|" + asiento.getFila() + String.valueOf(asiento.getColumna()) + "| ");
+			} else {
+				System.out.print("|XX| ");
+			}
+
+			// Cada 8 columnas printar salto de linea
+			if (i % 9 == 0) {
+				System.out.println("\n");
+			}
+
 		}
-		
+
 	}
-	
+
+	/**
+	 * Sumar al total de asientos ocupados al asignar asiento
+	 */
 	public void sumarAsientoOcupado() {
 		this.asientosOcupados++;
 	}
-	
-	public boolean comprobarAsientoLibre() { // Metodo para comprobar si hay asientos libres, segun el total de asientos(72)
+
+	/**
+	 * Metodo para comprobar si hay asientos libres, segun el total de. Asientos(72)
+	 * 
+	 * @return
+	 */
+	public boolean comprobarAsientoLibre() {
+
 		if (this.asientosOcupados < 72) {
 			return true;
 		}
 		return false;
-		
-		
-		
 
 	}
 

@@ -51,7 +51,7 @@ public class Pelicula {
 
 	@Override
 	public String toString() {
-		return "Pelicula [En taquilla " + titulo + ", con una duracion " + duracion + " min, la calificación de edad es " + edadMin + ",  del director "
+		return "[En taquilla " + titulo + ", con una duracion " + duracion + " min, la calificación de edad es " + edadMin + ",  del director "
 				+ director + "]";
 	}
 	
