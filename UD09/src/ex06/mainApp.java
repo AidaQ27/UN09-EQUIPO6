@@ -1,12 +1,14 @@
 package ex06;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class mainApp {
 
 	public static void main(String[] args) {
+		// Instanciamos pelicula
 		Pelicula pelicula = new Pelicula("Spiderwoman", 132, 16, "Director");
-		System.out.println(pelicula);
+		// Instanciamos cine
 		Cine cine = new Cine(pelicula);
 		cine.crearAsientos();
 
@@ -74,8 +76,17 @@ public class mainApp {
 	}
 	
 	public static void asignarAsiento(ArrayList<Asiento>asientos, Espectador espectador) {
-//		HashArray<Asiento, Espectador> 
-//		random(0, 63);
+		Hashtable<Asiento, Espectador> mapaAsientoEspectador = new Hashtable<Asiento, Espectador>();
+		
+		boolean asignado = false;
+		while(!asignado) {
+			Asiento asiento = asientos.get(random(0, 72));
+			
+			if(asiento.getDisponible()) {
+				mapaAsientoEspectador.put(asiento, espectador);
+				asignado = true;
+			}
+		}
+		
 	}
-
 }
