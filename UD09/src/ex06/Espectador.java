@@ -43,5 +43,3 @@ public class Espectador {
 			return "El nombre del espectador es " + nombre + ",tiene" + edad + " años y tiene " + dinero + "euros para pagar la entrada";
 		}
 }
-
-
