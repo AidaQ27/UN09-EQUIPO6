@@ -63,6 +63,7 @@ public class Cine {
 		
 	}
 	
+
 	/**
 	 * Metodo para mostrar asientos libres y ocupados
 	 */
@@ -87,6 +88,7 @@ public class Cine {
 		
 		
 		
+
 	}
 
 }

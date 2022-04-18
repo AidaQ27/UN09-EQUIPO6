@@ -32,9 +32,6 @@ public class Espectador {
 		public void setDinero(double dinero) {
 			this.dinero = dinero;
 		}
-		public void pagar(double precio) {
-			dinero -= precio;
-		}
 		public boolean validarEdad(int edadMin) {
 			return edad >= edadMin;
 		}
@@ -46,5 +43,3 @@ public class Espectador {
 			return "El nombre del espectador es " + nombre + ",tiene" + edad + " años y tiene " + dinero + "euros para pagar la entrada";
 		}
 }
-
-

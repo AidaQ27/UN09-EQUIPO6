@@ -25,7 +25,7 @@ public class mainApp {
 					asignarAsiento(cine.getAsientos(), espectador);
 					
 				}else{
-					System.out.println("La Sala está completa");
+					System.out.println("La Sala estï¿½ completa");
 				}
 			}
 
