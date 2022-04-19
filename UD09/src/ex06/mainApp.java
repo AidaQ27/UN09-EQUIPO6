@@ -8,26 +8,31 @@ public class mainApp {
 	public static void main(String[] args) {
 		// Instanciamos pelicula
 		Pelicula pelicula = new Pelicula("Spiderwoman", 132, 16, "Jhon Doe");
+		
 		// Instanciamos cine
 		Cine cine = new Cine(pelicula);
 		cine.crearAsientos();
 
 		// Generamos los espectadores
 		ArrayList<Espectador> espectadores = generarEspectadores(random(72, 72));
+		System.out.println("Espectadores que NO entran en la Sala:\n");
 		for (int i = 0; i < espectadores.size(); i++) {
 			Espectador espectador = espectadores.get(i);
+			
 			// Comprobar si el espectador tiene la edad minima para ver la pelicula
 			// Comprobar si tiene dinero para la entrada
+			
 			boolean tieneEdadMin = espectador.validarEdad(pelicula.getEdadMin());
 			boolean tieneDinero = espectador.validarDinero(cine.getPrecioEntrada());
 			if (tieneEdadMin && tieneDinero) {
 				if (cine.comprobarAsientoLibre()) { // Asignar asiento si es true
 					asignarAsiento(cine.getAsientos(), espectador);
-
+				
 				} else {
 					System.out.println("La Sala esta completa");
 				}
 			} else {
+				
 				System.out.println(espectador.getNombre() + " tiene " + espectador.getEdad() + " años y "
 						+ espectador.getDinero() + "€");
 				if (!tieneEdadMin) {
@@ -55,7 +60,7 @@ public class mainApp {
 	public static ArrayList<Espectador> generarEspectadores(int numeroEspectadores) {
 		ArrayList<Espectador> espectadores = new ArrayList<Espectador>();
 
-		// Generar un numero de espectadores
+		// Generar un numero de espectadores, con dinero, edad y nombre
 		for (int i = 0; i < numeroEspectadores; i++) {
 			String nombreEspectador = generarNombreApellido();
 			int edad = random(5, 95);
@@ -92,6 +97,11 @@ public class mainApp {
 		return nombreCompleto;
 	}
 
+	/**
+	 * Asignar asiento
+	 * @param asientos
+	 * @param espectador
+	 */
 	public static void asignarAsiento(ArrayList<Asiento> asientos, Espectador espectador) {
 		Hashtable<Asiento, Espectador> mapaAsientoEspectador = new Hashtable<Asiento, Espectador>();
 

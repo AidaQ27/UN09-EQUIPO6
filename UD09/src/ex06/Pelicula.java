@@ -9,7 +9,7 @@ public class Pelicula {
 	
 	// Constructor con todos los atributos
 	public Pelicula(String titulo, int duracion, int edadMin, String director) {
-		super();
+		
 		this.titulo = titulo;
 		this.duracion = duracion;
 		this.edadMin = edadMin;

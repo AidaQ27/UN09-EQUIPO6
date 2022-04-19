@@ -14,7 +14,7 @@ public class Cine {
 	public Cine(Pelicula pelicula) {
 		this.pelicula = pelicula;
 		this.precioEntrada = 6;
-		this.asientos = new ArrayList<Asiento>();
+		this.asientos = new ArrayList<Asiento>(); //Crea un array list para los asientos
 		this.asientosOcupados = 0;
 
 	}
@@ -42,6 +42,15 @@ public class Cine {
 
 	public void setAsientos(ArrayList<Asiento> asientos) {
 		this.asientos = asientos;
+	}
+
+
+	public int getAsientosOcupados() {
+		return this.asientosOcupados;
+	}
+
+	public void setAsientosOcupados(int asientosOcupados) {
+		this.asientosOcupados = asientosOcupados;
 	}
 
 	/**
@@ -97,6 +106,7 @@ public class Cine {
 	 */
 	public void sumarAsientoOcupado() {
 		this.asientosOcupados++;
+		
 	}
 
 	/**
