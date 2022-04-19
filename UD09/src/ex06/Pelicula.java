@@ -6,10 +6,10 @@ public class Pelicula {
 	private int duracion;
 	private int edadMin;
 	private String director;
-	
+
 	// Constructor con todos los atributos
 	public Pelicula(String titulo, int duracion, int edadMin, String director) {
-		
+
 		this.titulo = titulo;
 		this.duracion = duracion;
 		this.edadMin = edadMin;
@@ -51,11 +51,8 @@ public class Pelicula {
 
 	@Override
 	public String toString() {
-		return "[En taquilla " + titulo + ", con una duracion " + duracion + " min, la calificación de edad es " + edadMin + ",  del director "
-				+ director + "]";
+		return "[En taquilla " + titulo + ", con una duracion " + duracion + " min, la calificación de edad es "
+				+ edadMin + ",  del director " + director + "]";
 	}
-	
-	
+
 }
-
-

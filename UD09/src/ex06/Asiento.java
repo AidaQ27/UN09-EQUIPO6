@@ -23,12 +23,11 @@ public class Asiento {
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
-	
+
 	public String toString() {
 		return columna + " " + fila;
-//		return "Numero asiento: " + columna + " " + fila;
 	}
-	
+
 	public char getColumna() {
 		return columna;
 	}
@@ -45,6 +44,4 @@ public class Asiento {
 		this.fila = fila;
 	}
 
-	
-	
 }
