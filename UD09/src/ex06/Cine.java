@@ -1,6 +1,7 @@
 package ex06;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class Cine {
 
@@ -9,13 +10,17 @@ public class Cine {
 	private int precioEntrada;
 	private ArrayList<Asiento> asientos;
 	private int asientosOcupados;
+	private ArrayList<Espectador> espectadores;
+	private Hashtable<Asiento, Espectador> mapaAsientoEspectador;
 
 	// Constructor
 	public Cine(Pelicula pelicula) {
+		this.mapaAsientoEspectador = new Hashtable<Asiento, Espectador>();
 		this.pelicula = pelicula;
 		this.precioEntrada = 6;
-		this.asientos = new ArrayList<Asiento>(); //Crea un array list para los asientos
+		this.asientos = new ArrayList<Asiento>(); // Crea un array list para los asientos
 		this.asientosOcupados = 0;
+		this.espectadores = generarEspectadores(Helpers.random(20, 64));
 
 	}
 
@@ -44,13 +49,40 @@ public class Cine {
 		this.asientos = asientos;
 	}
 
-
 	public int getAsientosOcupados() {
 		return this.asientosOcupados;
 	}
 
 	public void setAsientosOcupados(int asientosOcupados) {
 		this.asientosOcupados = asientosOcupados;
+	}
+
+	/**
+	 * @return the espectadores
+	 */
+	public ArrayList<Espectador> getEspectadores() {
+		return espectadores;
+	}
+
+	/**
+	 * @param espectadores the espectadores to set
+	 */
+	public void setEspectadores(ArrayList<Espectador> espectadores) {
+		this.espectadores = espectadores;
+	}
+
+	/**
+	 * @return the mapaAsientoEspectador
+	 */
+	public Hashtable<Asiento, Espectador> getMapaAsientoEspectador() {
+		return mapaAsientoEspectador;
+	}
+
+	/**
+	 * @param mapaAsientoEspectador the mapaAsientoEspectador to set
+	 */
+	public void setMapaAsientoEspectador(Hashtable<Asiento, Espectador> mapaAsientoEspectador) {
+		this.mapaAsientoEspectador = mapaAsientoEspectador;
 	}
 
 	/**
@@ -101,12 +133,16 @@ public class Cine {
 
 	}
 
+	public void mostrarEspectadores() {
+		System.out.println();
+	}
+
 	/**
 	 * Sumar al total de asientos ocupados al asignar asiento
 	 */
 	public void sumarAsientoOcupado() {
 		this.asientosOcupados++;
-		
+
 	}
 
 	/**
@@ -121,6 +157,107 @@ public class Cine {
 		}
 		return false;
 
+	}
+
+	/**********************************************
+	 * /** Genera una cantidad de espectadores
+	 * 
+	 * @param numeroEspectadores
+	 * @return
+	 */
+	public static ArrayList<Espectador> generarEspectadores(int numeroEspectadores) {
+		ArrayList<Espectador> espectadores = new ArrayList<Espectador>();
+
+		// Generar un numero de espectadores, con dinero, edad y nombre
+		for (int i = 0; i < numeroEspectadores; i++) {
+			String nombreEspectador = Espectador.generarNombreApellido();
+			int edad = Helpers.random(5, 95);
+			int dinero = Helpers.random(3, 10);
+			espectadores.add(new Espectador(nombreEspectador, edad, dinero));
+		}
+
+		return espectadores;
+
+	}
+
+	public boolean comprobarEspectador(Espectador espectador) {
+		// Comprobar si el espectador tiene la edad minima para ver la pelicula
+		// Comprobar si tiene dinero para la entrada
+		boolean tieneEdadMin = espectador.validarEdad(this.pelicula.getEdadMin());
+		boolean tieneDinero = espectador.validarDinero(this.precioEntrada);
+
+		boolean entrar = true;
+		String motivo = "";
+
+		if (!tieneDinero) {
+			motivo += "No tiene suficiente dinero.";
+			entrar = false;
+		}
+
+		if (!tieneEdadMin) {
+			motivo += "No tiene la edad para entrar.";
+			entrar = false;
+		}
+		if (entrar) {
+			System.out.println(espectador.getNombre() + " tiene " + espectador.getEdad() + " años y "
+					+ espectador.getDinero() + "€. " + "Ha entrado.");
+
+		} else {
+			System.out.println(espectador.getNombre() + " tiene " + espectador.getEdad() + " años y "
+					+ espectador.getDinero() + "€. " + motivo);
+		}
+		return entrar;
+	}
+
+	public void colocarAsiento() {
+		for (int i = 0; i < espectadores.size(); i++) {
+			Espectador espectador = espectadores.get(i);
+
+			// Comprobar si el espectador tiene la edad minima para ver la pelicula
+			// Comprobar si tiene dinero para la entrada
+
+			if (this.comprobarEspectador(espectador)) {
+				if (this.comprobarAsientoLibre()) { // Asignar asiento si es true
+					asignarAsiento(this.getAsientos(), espectador);
+
+				} 
+//				else {
+//					System.out.println("La Sala esta completa");
+//				}
+
+			}
+		}
+	}
+
+	/**
+	 * Asignar asiento
+	 * 
+	 * @param asientos
+	 * @param espectador
+	 */
+	public void asignarAsiento(ArrayList<Asiento> asientos, Espectador espectador) {
+
+		boolean asignado = false;
+		while (!asignado) {
+			Asiento asiento = asientos.get(Helpers.random(0, 72));
+
+			if (asiento.getDisponible()) {
+				this.mapaAsientoEspectador.put(asiento, espectador);
+				asiento.setDisponible(false);
+				asignado = true;
+			}
+		}
+
+	}
+
+	/**
+	 * Mostrar todos los
+	 */
+	public void mostrarEspectadorAsiento() {
+		for (Asiento i : this.mapaAsientoEspectador.keySet()) {
+			System.out.println("Asiento: " + i.getColumna() + i.getFila() + " esta sentado: "
+					+ mapaAsientoEspectador.get(i).getNombre());
+		}
 	}
 
 }
